@@ -2,7 +2,7 @@
 
 1. install virtualenv
 2. pip install -r requirements.txt
-3. export FLASK_APP=hi.py
+3. export FLASK_APP=app.py
 4. flask run
 
 ## TODO
