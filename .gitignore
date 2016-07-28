@@ -1,2 +1,6 @@
+.DS_Store
 .idea
 __pycache__
+macEnv
+winEnv
+ENV
