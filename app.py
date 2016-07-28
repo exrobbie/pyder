@@ -3,7 +3,6 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     resp = make_response(render_template('index.html'))
@@ -23,6 +22,11 @@ def hello(name):
     return 'hello %s, the url is %s' % (name, url_for('hello', name=name))
 
 
+@app.route('/guangzhou/')
+def guangzhou_view():
+    return render_template('guangzhou.html')
+
+
 @app.route('/api/user/login', methods=['POST', 'GET'])
 def api_login():
     if request.method == 'POST':
@@ -36,7 +40,7 @@ def api_login():
     if valid == 1:
         return redirect(url_for('index'))
     else:
-        abort(411)
+        abort(401)
 
 
 def valid_login(username, password):
@@ -48,7 +52,12 @@ def valid_login(username, password):
 
 @app.errorhandler(404)
 def not_found(error):
-    return make_response(render_template('404.html'),404)
+    return make_response(render_template('404.html'), 404)
+
+
+@app.errorhandler(401)
+def no_permission(error):
+    return make_response(render_template('401.html'),401)
 
 if __name__ == '__main__':
     app.run()
