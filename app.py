@@ -1,4 +1,4 @@
-from flask import Flask, url_for, request, render_template, make_response
+from flask import Flask, render_template, make_response, request, redirect, abort, url_for
 from apis import api_login
 from werkzeug.utils import secure_filename
 
@@ -29,6 +29,27 @@ def hello(name):
 @app.route('/guangzhou/')
 def guangzhou_view():
     return render_template('guangzhou.html')
+
+
+@app.route('/api/user/login', methods=['POST', 'GET'])
+def api_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+    elif request.method == 'GET':
+        username = request.args['username']
+        password = request.args['password']
+    if valid_login(username, password):
+        return redirect(url_for('index'))
+    else:
+        return abort(401)
+
+
+def valid_login(username, password):
+    if username == 'litianao' and password == 'haizhi123':
+        return 1
+    else:
+        return 0
 
 
 @app.errorhandler(404)
