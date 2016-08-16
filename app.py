@@ -3,8 +3,6 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-api_login()
-
 
 @app.route('/')
 def index():
