@@ -22,6 +22,13 @@ def get_magnet(keyword):
     a_tags = soup.find(class_='data-list').find_all('a')
     for a in a_tags:
         print(a.get('href'))
-
+    # Redirect to magnet link pagef
+    magnet_url = a_tags[0].get('href')
+    print('Redirecting...')
+    magnet_res = requests.get(magnet_url, headers=headers)
+    magnet_content = magnet_res.text
+    magnet_soup = BeautifulSoup(magnet_content, 'html.parser')
+    magnet_link = magnet_soup.find(class_='magnet-link').text
+    print(magnet_link)
 
 get_magnet('rbd-770')
