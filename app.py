@@ -1,4 +1,6 @@
 from flask import Flask, render_template, make_response, request, redirect, abort, url_for
+from spider import get_magnet
+print(get_magnet)
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -26,6 +28,17 @@ def hello(name):
 @app.route('/guangzhou/')
 def guangzhou_view():
     return render_template('guangzhou.html')
+
+
+@app.route('/magnet', methods=['GET'])
+def magnet_page():
+    return render_template('magnet.html')
+
+
+@app.route('/magnet', methods=['POST'])
+def magnet_data():
+    get_magnet()
+    return make_response("{'name': 'robbie'}", 200)
 
 
 @app.route('/api/user/login', methods=['POST', 'GET'])
@@ -56,7 +69,7 @@ def not_found(error):
 
 @app.errorhandler(401)
 def no_permission(error):
-    return make_response(render_template('401.html'),401)
+    return make_response(render_template('401.html'), 401)
 
 
 if __name__ == '__main__':

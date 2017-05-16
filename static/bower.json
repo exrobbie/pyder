@@ -1,0 +1,17 @@
+{
+  "name": "static",
+  "homepage": "https://github.com/exrobbie/pyder",
+  "authors": [
+    "Li Tianao <litianao@haizhi.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

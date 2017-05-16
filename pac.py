@@ -1,3 +1,13 @@
-name = input('please enter your name')
-print(name)
-input('press any key to exit')
+"fadsfadff"
+books = {
+    'name': 'robbie',
+    'author': 'chris'
+}
+
+booking = books
+
+print(booking)
+
+booking['name'] = 'rock'
+
+print(books)

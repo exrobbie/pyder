@@ -16,7 +16,7 @@
     angular.module('app', [])
         .controller('mainCtrl', ['$scope','$http', function ($scope, $http) {
             $scope.getMagnet= function () {
-                 $http.post('/post_magnet')
+                 $http.post('/magnet')
                 .then(function(res){
                     console.log(res);
                 });

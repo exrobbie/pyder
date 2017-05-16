@@ -31,4 +31,4 @@ def get_magnet(keyword):
     magnet_link = magnet_soup.find(class_='magnet-link').text
     print(magnet_link)
 
-get_magnet('rbd-770')
+# get_magnet('rbd-770')
