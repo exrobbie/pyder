@@ -1,13 +1,6 @@
-"fadsfadff"
-books = {
-    'name': 'robbie',
-    'author': 'chris'
-}
+from enum import Enum
 
-booking = books
+Weekdays = Enum('Weekdays', ('Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'))
 
-print(booking)
-
-booking['name'] = 'rock'
-
-print(books)
+for x, y in Weekdays.__members__.items():
+    print(x, y)

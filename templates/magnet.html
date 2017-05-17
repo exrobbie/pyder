@@ -7,21 +7,30 @@
 
 </head>
 <body ng-app="app">
-<div ng-controller="mainCtrl">
-    <label>Get <input type="text" ng-model="keyword"></label>
-    <button ng-click="getMagnet()">Start</button>
-</div>
 
-<script>
-    angular.module('app', [])
-        .controller('mainCtrl', ['$scope','$http', function ($scope, $http) {
-            $scope.getMagnet= function () {
-                 $http.post('/magnet')
-                .then(function(res){
-                    console.log(res);
-                });
-            }
-        }]);
-</script>
+<form action="/magnet" method="post">
+    <input type="text" name="keyword">
+    <button type="submit">Click</button>
+</form>
+
+//Angular 的实现版本
+{#<div ng-controller="mainCtrl">#}
+{#    <label>Get <input type="text" ng-model="keyword"></label>#}
+{#    <button ng-click="getMagnet()">Start</button>#}
+{#</div>#}
+
+{#<script>#}
+{#    angular.module('app', [])#}
+{#        .controller('mainCtrl', ['$scope','$http', function ($scope, $http) {#}
+{#            $scope.getMagnet= function () {#}
+{#                console.log($scope.keyword);#}
+{#                 $http.post('/magnet', {#}
+{#                     keyword: $scope.keyword#}
+{#                 }).then(function(res){#}
+{#                    console.log(res);#}
+{#                });#}
+{#            }#}
+{#        }]);#}
+{#</script>#}
 </body>
 </html>

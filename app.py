@@ -1,6 +1,5 @@
 from flask import Flask, render_template, make_response, request, redirect, abort, url_for
-from spider import get_magnet
-print(get_magnet)
+from spider.get_magnet import Magnet
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -37,8 +36,8 @@ def magnet_page():
 
 @app.route('/magnet', methods=['POST'])
 def magnet_data():
-    get_magnet()
-    return make_response("{'name': 'robbie'}", 200)
+    result = Magnet.get_magnet(request.form['keyword'])
+    return make_response(result, 200)
 
 
 @app.route('/api/user/login', methods=['POST', 'GET'])
